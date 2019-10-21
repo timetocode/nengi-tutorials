@@ -1,7 +1,7 @@
 {
-  "name": "nengi-2d-demo",
+  "name": "nengi-tutorials",
   "version": "0.0.1",
-  "description": "nengi 2d example game with client-side prediction and lag compensation",
+  "description": "nengi tutorials",
   "scripts": {
     "start": "npx concurrently \"npx webpack-dev-server --config webpack.dev.js\" \"npx nodemon ./server/index.js --ignore public --ignore bot/\"",
     "build": "npx webpack --config webpack.prod.js"

@@ -7,18 +7,22 @@ import renderer from './graphics/renderer'
 const client = new nengi.Client(nengiConfig, 100)
 
 const state = {
-    // client-side game state can live in here
+    /* clientside state can go here */
 }
 
+/* create hooks for any entity create, delete, and watch properties */
 clientHookAPI(client, createHooks(state))
 
 client.on('connected', res => { console.log('connection?:', res) })
 client.on('disconnected', () => { console.log('connection closed') })
 
+/* on('Message::AnyMessage', msg => { }) */
+
 client.connect('ws://localhost:8079')
 
 const update = (delta, tick, now) => {
     client.readNetworkAndEmit()
+    /* clientside logic can go here */
     renderer.update(delta)
     client.update()
 }

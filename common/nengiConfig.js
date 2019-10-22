@@ -1,4 +1,5 @@
 import nengi from 'nengi'
+import NetLog from './NetLog'
 
 const config = {
     UPDATE_RATE: 20, 
@@ -15,7 +16,9 @@ const config = {
     protocols: {
         entities: [],
         localMessages: [],
-        messages: [],
+        messages: [
+            ['NetLog', NetLog]
+        ],
         commands: [],
         basics: []
     }

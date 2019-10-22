@@ -16,7 +16,10 @@ clientHookAPI(client, createHooks(state))
 client.on('connected', res => { console.log('connection?:', res) })
 client.on('disconnected', () => { console.log('connection closed') })
 
-/* on('Message::AnyMessage', msg => { }) */
+/* on('message::AnyMessage', msg => { }) */
+client.on('message::NetLog', message => {
+    console.log(`NetLog: ${ message.text }`)
+})
 
 client.connect('ws://localhost:8079')
 

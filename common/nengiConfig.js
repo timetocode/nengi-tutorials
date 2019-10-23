@@ -1,5 +1,6 @@
 import nengi from 'nengi'
 import NetLog from './NetLog'
+import PlayerCharacter from './PlayerCharacter'
 
 const config = {
     UPDATE_RATE: 20, 
@@ -14,7 +15,9 @@ const config = {
     HISTORIAN_TICKS: 40,
 
     protocols: {
-        entities: [],
+        entities: [
+            ['PlayerCharacter', PlayerCharacter]
+        ],
         localMessages: [],
         messages: [
             ['NetLog', NetLog]

@@ -25,14 +25,28 @@ instance.on('disconnect', client => {
     instance.removeEntity(client.entity)
 })
 
-/* on('Command:AnyCommand', ({ command, client }) => { }) */
+/* on('command::AnyCommand', ({ command, client }) => { }) */
+instance.on('command::PlayerInput', ({ command, client }) => {
+    const { up, down, left, right, delta } = command
+    const { entity } = client
+    const speed = 200
+    if (up) {
+        entity.y -= speed * delta
+    }
+    if (down) {
+        entity.y += speed * delta
+    }
+    if (left) {
+        entity.x -= speed * delta
+    }
+    if (right) {
+        entity.x += speed * delta
+    }
+})
 
 const update = (delta, tick, now) => {
     instance.emitCommands()
     /* serverside logic can go here */
-    entities.forEach(entity => {
-        entity.x += 1
-    })
     instance.update()
 }
 

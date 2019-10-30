@@ -1,5 +1,5 @@
-import Player from '../graphics/Player'
-import renderer from '../graphics/renderer'
+import Player from '../graphics/Player.js'
+import renderer from '../graphics/renderer.js'
 
 export default (state) => {
     return {

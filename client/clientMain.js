@@ -1,6 +1,6 @@
 
 import { update } from './gameClient.js'
-import renderer from './graphics/renderer'
+import renderer from './graphics/renderer.js'
 
 window.onload = function() {
     console.log('window loaded')

@@ -1,6 +1,7 @@
 import nengi from 'nengi'
-import NetLog from './NetLog'
-import PlayerCharacter from './PlayerCharacter'
+import NetLog from './NetLog.js'
+import PlayerCharacter from './PlayerCharacter.js'
+import PlayerInput from './PlayerInput.js'
 
 const config = {
     UPDATE_RATE: 20, 
@@ -22,7 +23,9 @@ const config = {
         messages: [
             ['NetLog', NetLog]
         ],
-        commands: [],
+        commands: [
+            ['PlayerInput', PlayerInput]
+        ],
         basics: []
     }
 }

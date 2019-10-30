@@ -1,6 +1,6 @@
 import nengi from 'nengi'
-import NetLog from './NetLog'
-import PlayerCharacter from './PlayerCharacter'
+import NetLog from './NetLog.js'
+import PlayerCharacter from './PlayerCharacter.js'
 
 const config = {
     UPDATE_RATE: 20, 

@@ -10,6 +10,8 @@ const client = new nengi.Client(nengiConfig, 100)
 
 const state = {
     /* clientside state can go here */
+    myId: null,
+    myEntity: null
 }
 
 /* create hooks for any entity create, delete, and watch properties */
@@ -23,6 +25,10 @@ client.on('message::NetLog', message => {
     console.log(`NetLog: ${ message.text }`)
 })
 
+client.on('message::Identity', message => {
+    state.myId = message.entityId
+})
+
 client.connect('ws://localhost:8079')
 
 const update = (delta, tick, now) => {
@@ -31,6 +37,10 @@ const update = (delta, tick, now) => {
     /* clientside logic can go here */
     const { up, down, left, right } = frameState
     client.addCommand(new PlayerInput(up, down, left, right, delta))
+
+    if (state.myEntity) {
+        renderer.centerCamera(state.myEntity)
+    }
 
     renderer.update(delta)
     client.update()

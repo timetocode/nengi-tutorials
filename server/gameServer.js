@@ -3,6 +3,7 @@ import nengiConfig from '../common/nengiConfig.js'
 import instanceHookAPI from './instanceHookAPI.js'
 import NetLog from '../common/NetLog.js'
 import PlayerCharacter from '../common/PlayerCharacter.js'
+import Identity from '../common/Identity.js'
 
 const instance = new nengi.Instance(nengiConfig, { port: 8079 })
 instanceHookAPI(instance)
@@ -16,8 +17,15 @@ instance.on('connect', ({ client, callback }) => {
     instance.message(new NetLog('hello world'), client)
     const entity = new PlayerCharacter()
     instance.addEntity(entity)
+    instance.message(new Identity(entity.nid), client)
     entities.set(entity.nid, entity)
     client.entity = entity
+    client.view = {
+        x: entity.x,
+        y: entity.y,
+        halfWidth: 500,
+        halfHeight: 500
+    }
 })
 
 instance.on('disconnect', client => {
@@ -47,6 +55,10 @@ instance.on('command::PlayerInput', ({ command, client }) => {
 const update = (delta, tick, now) => {
     instance.emitCommands()
     /* serverside logic can go here */
+    instance.clients.forEach(client => {
+        client.view.x = client.entity.x
+        client.view.y = client.entity.y
+    })
     instance.update()
 }
 

@@ -25,7 +25,7 @@ instance.on('disconnect', client => {
     instance.removeEntity(client.entity)
 })
 
-/* on('Command:AnyCommand', ({ command, client }) => { }) */
+/* on('command::AnyCommand', ({ command, client }) => { }) */
 
 const update = (delta, tick, now) => {
     instance.emitCommands()

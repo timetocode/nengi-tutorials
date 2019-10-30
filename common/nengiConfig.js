@@ -1,5 +1,5 @@
 import nengi from 'nengi'
-import NetLog from './NetLog'
+import NetLog from './NetLog.js'
 
 const config = {
     UPDATE_RATE: 20, 

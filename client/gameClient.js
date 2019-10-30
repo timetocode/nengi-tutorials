@@ -2,7 +2,7 @@ import nengi from 'nengi'
 import nengiConfig from '../common/nengiConfig.js'
 import clientHookAPI from './clientHookAPI.js'
 import createHooks from './hooks/createHooks.js'
-import renderer from './graphics/renderer'
+import renderer from './graphics/renderer.js'
 
 const client = new nengi.Client(nengiConfig, 100)
 

@@ -16,7 +16,7 @@ instance.on('disconnect', client => {
     // disconnected
 })
 
-/* on('Command:AnyCommand', ({ command, client }) => { }) */
+/* on('command::AnyCommand', ({ command, client }) => { }) */
 
 const update = (delta, tick, now) => {
     instance.emitCommands()

@@ -1,14 +1,14 @@
-import { Container, Graphics } from 'pixi.js'
+import { Container, Sprite } from 'pixi.js'
 
 class Player extends Container {
     constructor() {
         super()
 
-        const circle = new Graphics()
-        circle.beginFill(0xffffff)
-        circle.drawCircle(0, 0, 25)
-        circle.endFill()
-        this.addChild(circle)
+        const sprite = Sprite.from('/images/ship.png')
+        sprite.scale.set(3, 3)
+        sprite.anchor.set(0.5, 0.5)
+        sprite.rotation = 0.5 * Math.PI
+        this.addChild(sprite)
     }
 }
 

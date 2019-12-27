@@ -1,5 +1,7 @@
-import { autoDetectRenderer, Container } from 'pixi.js'
+import { autoDetectRenderer, Container, settings, SCALE_MODES } from 'pixi.js'
 import BackgroundGrid from './BackgroundGrid.js'
+
+settings.SCALE_MODE = SCALE_MODES.NEAREST
 
 let renderer = null
 

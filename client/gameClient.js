@@ -3,7 +3,7 @@ import nengiConfig from '../common/nengiConfig.js'
 import clientHookAPI from './clientHookAPI.js'
 import createHooks from './hooks/createHooks.js'
 import renderer from './graphics/renderer.js'
-import { frameState, releaseKeys } from './input.js'
+import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/PlayerInput.js'
 
 const client = new nengi.Client(nengiConfig, 100)
@@ -35,10 +35,14 @@ const update = (delta, tick, now) => {
     client.readNetworkAndEmit()
 
     /* clientside logic can go here */
-    const { up, down, left, right } = frameState
-    client.addCommand(new PlayerInput(up, down, left, right, delta))
-
     if (state.myEntity) {
+        const { up, down, left, right } = frameState
+        const { mouseX, mouseY } = currentState
+        const worldCoords = renderer.toWorldCoordinates(mouseX, mouseY)
+        const dx = worldCoords.x - state.myEntity.x
+        const dy = worldCoords.y - state.myEntity.y
+        const rotation = Math.atan2(dy, dx)
+        client.addCommand(new PlayerInput(up, down, left, right, rotation, delta))
         renderer.centerCamera(state.myEntity)
     }
 

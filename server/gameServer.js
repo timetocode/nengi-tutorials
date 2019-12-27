@@ -35,7 +35,7 @@ instance.on('disconnect', client => {
 
 /* on('command::AnyCommand', ({ command, client }) => { }) */
 instance.on('command::PlayerInput', ({ command, client }) => {
-    const { up, down, left, right, delta } = command
+    const { up, down, left, right, rotation, delta } = command
     const { entity } = client
     const speed = 200
     if (up) {
@@ -50,6 +50,7 @@ instance.on('command::PlayerInput', ({ command, client }) => {
     if (right) {
         entity.x += speed * delta
     }
+    entity.rotation = rotation
 })
 
 const update = (delta, tick, now) => {

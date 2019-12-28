@@ -3,6 +3,7 @@ import nengiConfig from '../common/nengiConfig.js'
 import instanceHookAPI from './instanceHookAPI.js'
 import NetLog from '../common/NetLog.js'
 import PlayerCharacter from '../common/PlayerCharacter.js'
+import Asteroid from '../common/Asteroid.js'
 import Identity from '../common/Identity.js'
 
 const instance = new nengi.Instance(nengiConfig, { port: 8079 })
@@ -10,6 +11,9 @@ instanceHookAPI(instance)
 
 /* serverside state here */
 const entities = new Map()
+
+const asteroid = new Asteroid()
+instance.addEntity(asteroid)
 
 instance.on('connect', ({ client, callback }) => {
     /* client init logic & state can go here */

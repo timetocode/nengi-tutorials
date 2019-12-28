@@ -1,6 +1,7 @@
 import nengi from 'nengi'
 import NetLog from './NetLog.js'
 import PlayerCharacter from './PlayerCharacter.js'
+import Asteroid from './Asteroid.js'
 import PlayerInput from './PlayerInput.js'
 import Identity from './Identity.js'
 
@@ -18,7 +19,8 @@ const config = {
 
     protocols: {
         entities: [
-            ['PlayerCharacter', PlayerCharacter]
+            ['PlayerCharacter', PlayerCharacter],
+            ['Asteroid', Asteroid]
         ],
         localMessages: [],
         messages: [

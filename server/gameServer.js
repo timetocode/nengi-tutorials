@@ -12,9 +12,6 @@ instanceHookAPI(instance)
 /* serverside state here */
 const entities = new Map()
 
-const asteroid = new Asteroid()
-instance.addEntity(asteroid)
-
 instance.on('connect', ({ client, callback }) => {
     /* client init logic & state can go here */
     callback({ accepted: true, text: 'Welcome!' })
